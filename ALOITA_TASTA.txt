@@ -1,0 +1,96 @@
+JUNALÄHTÖTAULU – KÄYNNISTYS MACILLA
+=================================
+
+Tämä on kokonainen Python + Flask -sovellus. Avaa se selaimessa sen jälkeen,
+kun olet käynnistänyt Python-palvelimen alla olevilla ohjeilla.
+
+1. PURA JA AVAA KANSIO
+
+   Kaksoisnapsauta ladattua junalahtotaulu.zip-tiedostoa Finderissa.
+   Avaa syntynyt junalahtotaulu-kansio VS Codessa:
+   File / Tiedosto > Open Folder / Avaa kansio.
+
+   Oikeassa kansiossa näkyvät app.py, requirements.txt ja README.md.
+   Säilytä myös templates-, static- ja tests-alikansiot mukana.
+
+2. AVAA PÄÄTE VS CODESSA
+
+   Valitse Terminal / Pääte > New Terminal / Uusi pääte.
+   Komennot kirjoitetaan alareunan päätteeseen, eivät Python-tiedostoon.
+   Paina Enter jokaisen komennon jälkeen ja odota sen valmistumista.
+
+3. TARKISTA PYTHON
+
+   python3 --version
+
+   Tarvitset tähän projektiin Python 3.10:n tai uudemman version.
+
+4. LUO PROJEKTILLE OMA KIRJASTOYMPÄRISTÖ
+
+   python3 -m venv .venv
+
+   tai
+
+   python -m venv .venv
+
+5. OTA SE KÄYTTÖÖN
+
+   source .venv/bin/activate        (mac)
+   tai
+   .\env\Scripts\Activate.ps1       (windows)
+
+   Rivin alkuun ilmestyy yleensä (.venv).
+
+6. ASENNA TARVITTAVAT KIRJASTOT
+
+   python -m pip install -r requirements.txt
+
+   Tämä tehdään ensimmäisellä käyttökerralla. Asennus tarvitsee internetin.
+
+7. KÄYNNISTÄ SOVELLUS
+
+   python app.py
+
+   Jätä pääte auki. Palvelin odottaa nyt selaimen pyyntöjä.
+
+8. AVAA SAFARI TAI MUU SELAIN
+
+   Kirjoita selaimen osoiteriville:
+
+   http://127.0.0.1:5001
+
+   Tämä osoite tarkoittaa omaa tietokonettasi.
+   Pelkän templates/index.html-tiedoston avaaminen ei käynnistä sovellusta.
+
+9. KOKEILE KOKKOLAA
+
+   Valitse Kokkola (KOK) ja paina Hae lähdöt.
+   Vertaa aikataulun mukaista aikaa arvioituun tai toteutuneeseen aikaan.
+
+   Kokeile esimerkkitilanteita -kohdasta voit näyttää myös:
+   - keksityn lähtötaulun ja erilaisia viivetilanteita
+   - tilanteen, jossa junia ei löydy
+   - tilanteen, jossa tietojen haku epäonnistuu.
+
+   Esimerkkitiedot on merkitty näkyvästi. Ne eivät ole oikeita junatietoja.
+   Kun kirjastot on asennettu, esimerkkitilat toimivat ilman Digitraffic-yhteyttä.
+
+10. LOPETA TAI KÄYNNISTÄ UUDELLEEN
+
+   Lopeta: paina päätteessä Control + C (Macilla Control, ei Command).
+
+   Myöhemmin: avaa sama kansio ja uusi pääte. Anna vain nämä komennot:
+
+   source .venv/bin/activate
+   python app.py
+
+LISÄTIETOJA
+
+README.md kertoo, mitä kukin tiedosto tekee, miten REST API toimii ja miten
+testit suoritetaan. Python-, HTML-, CSS- ja JavaScript-koodissa on suomenkielisiä
+kommentteja. Koko projektikansio tarvitaan sovelluksen käyttämiseen.
+
+Jos näet ModuleNotFoundError-virheen, tarkista vaiheet 5 ja 6.
+Jos selain ei avaa sivua, tarkista että vaihe 7 on käynnissä ja osoite on oikein.
+Jos junatietojen haku epäonnistuu, kokeile hetken kuluttua uudelleen. Voit
+silti esitellä toimintoja selvästi merkityissä esimerkkitiloissa.
