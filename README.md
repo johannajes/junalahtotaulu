@@ -4,7 +4,11 @@ Selainkäyttöinen harjoitussovellus näyttää Helsingin, Tampereen ja Kokkolan
 
 Sovelluksessa on myös erilliset, selvästi merkityt esimerkkitilat lähtötaulun, tyhjän tuloksen ja yhteysvirheen esittelyyn. Esimerkkien junat ja ajat ovat keksittyjä. Niitä ei käytetä automaattisesti verkkoyhteyden epäonnistuessa.
 
-## 1. Käynnistä Macissa
+## 1. Käynnistä sovellus
+
+Valitse oman käyttöjärjestelmäsi ohje.
+
+### 1.1 Mac (macOS)
 
 Tarvitset Python 3.10:n tai uudemman, selaimen ja internetyhteyden kirjastojen asennukseen sekä oikeiden junatietojen hakemiseen. VS Code helpottaa tiedostojen tarkastelua. Jos Python on jo asennettu, sitä ei tarvitse asentaa uudelleen.
 
@@ -52,6 +56,84 @@ Seuraavalla käyttökerralla avaa sama kansio ja terminaali. Kirjastoja ei tarvi
 source .venv/bin/activate
 python app.py
 ```
+
+### 1.2 Windows (PowerShell)
+
+Tarvitset Python 3.10:n tai uudemman, selaimen ja internetyhteyden. Jos Pythonia ei ole asennettu, lataa se osoitteesta https://www.python.org/downloads/ ja valitse asennuksessa **Add Python to PATH**, jos valinta on tarjolla.
+
+1. Pura ZIP-tiedosto Resurssienhallinnassa: napsauta tiedostoa hiiren oikealla painikkeella ja valitse **Pura kaikki**.
+2. Avaa VS Code. Valitse **File → Open Folder…** ja avaa `junalahtotaulu`-kansio. Oikeassa kansiossa näkyvät `app.py` ja `requirements.txt`.
+3. Valitse **Terminal → New Terminal**. Käytä PowerShell-terminaalia ja suorita seuraavat komennot yksi kerrallaan.
+
+Tarkista Python:
+
+```powershell
+py --version
+```
+
+Jos `py` ei toimi, kokeile `python --version` ja käytä seuraavassa komennossa `python`-komentoa `py`-komennon sijaan.
+
+Luo projektin oma virtuaaliympäristö:
+
+```powershell
+py -m venv .venv
+```
+
+Aktivoi virtuaaliympäristö:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+Jos PowerShell estää aktivointikomentosarjan suorittamisen, voit käyttää virtuaaliympäristön Pythonia suoraan ilman aktivointia (katso vaihtoehto alla).
+
+Terminaalin rivin alkuun tulee yleensä `(.venv)`. Asenna kirjastot:
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+Käynnistä palvelin:
+
+```powershell
+python app.py
+```
+
+Pidä terminaali auki ja avaa Edgessä, Chromessa tai muussa selaimessa osoite **http://127.0.0.1:5001**. HTML-tiedostoa ei avata erikseen Resurssienhallinnasta.
+
+Pysäytä sovellus terminaalissa painamalla **Ctrl + C**.
+
+Seuraavalla käyttökerralla avaa sama kansio ja terminaali:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+python app.py
+```
+
+#### Vaihtoehto: käyttö ilman aktivointia
+
+Jos PowerShell estää aktivoinnin, suorita asennus ja käynnistys suoraan virtuaaliympäristön Pythonilla:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe app.py
+```
+
+Seuraavalla käyttökerralla riittää jälkimmäinen komento. Testit voi suorittaa vastaavasti komennolla `.\.venv\Scripts\python.exe -m unittest discover -s tests -v`.
+
+#### Windowsin komentokehote (CMD)
+
+Jos käytät PowerShellin sijaan komentokehotetta, aktivointikomento on:
+
+```cmd
+.venv\Scripts\activate.bat
+```
+
+Muut Python-komennot toimivat kuten yllä.
+
+### Virtuaaliympäristö ja Git
+
+Sekä Macissa että Windowsissa virtuaaliympäristö luodaan paikallisesti `.venv`-kansioon. Älä lisää sitä Gitiin. Varmista, että `.gitignore` sisältää rivit `.venv/` ja `venv/`. Projektin kirjastot asennetaan `requirements.txt`-tiedoston avulla.
 
 ## 2. Käyttötapaus: Kokkolan lähdöt
 
@@ -159,6 +241,8 @@ Sovellus on paikallinen oppimisprojekti. Julkinen verkkopalvelu tarvitsee erikse
 
 ## 8. Tavalliset käynnistysongelmat
 
+- **Windowsissa `ZoneInfoNotFoundError`:** asenna tarvittaessa aikavyöhyketiedot aktivoidussa virtuaaliympäristössä komennolla `python -m pip install tzdata`. Jos `tzdata` puuttuu `requirements.txt`-tiedostosta, lisää se myös projektin riippuvuuksiin.
+- **Windowsissa PowerShell estää aktivoinnin:** käytä kohdan 1.2 ohjetta ilman aktivointia tai CMD-komentokehotetta.
 - **`No module named flask` tai `requests`:** aktivoi `.venv` ja suorita kirjastojen asennuskomento uudelleen.
 - **`can't open file 'app.py'`:** terminaali on väärässä kansiossa. Avaa VS Codessa kansio, jonka sisällä `app.py` näkyy, ja avaa uusi terminaali.
 - **Selaimeen ei tule sivua:** varmista, että `python app.py` on edelleen käynnissä, ja käytä täsmälleen osoitetta `http://127.0.0.1:5001`.
